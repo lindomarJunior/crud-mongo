@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1 sec:authorize="hasRole('ROLE_ADMIN')"><a href="/Admin">Administracao</a></h1>
+<h1 sec:authorize="hasRole('ROLE_GERENTE')"><a href="/Gerencia">Gerencia</a></h1>
+<h1 sec:authorize="hasRole('ROLE_CLIENTE')"><a href="/Cliente">Cliente</a></h1>
+<h1>Hello</h1>
+<form method="POST" action="/logout">
+	<button type="submit">Sair</button>
+	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+</form>
+</body>
+</html>
